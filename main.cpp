@@ -3,15 +3,8 @@
 #include "marcaciones.h"
 #include "reportes.h"
 
-void limpiarPantalla() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
-}
-
-void mostrarEncabezado() {
+void mostrarEncabezado()
+{
     std::cout << "\033[1;36m";
     std::cout << "╔════════════════════════════════════════════════╗\n";
     std::cout << "║       SISTEMA DE CONTROL DE ASISTENCIA        ║\n";
@@ -20,7 +13,8 @@ void mostrarEncabezado() {
     std::cout << "\033[0m";
 }
 
-void mostrarMenu() {
+void mostrarMenu()
+{
     std::cout << "\n\033[1;33m";
     std::cout << "╔═════════════════════ MENÚ PRINCIPAL ═══════════════════╗\n";
     std::cout << "║ 1. ➕ Agregar Empleado                                  ║\n";
@@ -34,7 +28,8 @@ void mostrarMenu() {
     std::cout << "Seleccione una opción: ";
 }
 
-void mostrarSubmenuReportes() {
+void mostrarSubmenuReportes()
+{
     std::cout << "\n\033[1;35m";
     std::cout << "╔═════════════════════ MENÚ DE REPORTES ══════════════════╗\n";
     std::cout << "║ 1. 📆 Asistencia por rango de fechas                    ║\n";
@@ -48,9 +43,11 @@ void mostrarSubmenuReportes() {
     std::cout << "Seleccione un reporte: ";
 }
 
-int main() {
+int main()
+{
     int opcion;
-    do {
+    do
+    {
         mostrarEncabezado();
         mostrarMenu();
         std::cin >> opcion;
@@ -58,7 +55,8 @@ int main() {
 
         std::cout << "\n\033[1;34m-------------------------------------------\033[0m\n";
 
-        switch (opcion) {
+        switch (opcion)
+        {
         case 1:
             agregarEmpleado();
             break;
@@ -71,29 +69,47 @@ int main() {
         case 4:
             listarMarcaciones();
             break;
-        case 5: {
+        case 5:
+        {
             int r;
-            do {
+            do
+            {
                 mostrarSubmenuReportes();
                 std::cin >> r;
                 std::cin.ignore();
 
                 std::cout << "\n\033[1;34m-------------------------------------------\033[0m\n";
-                switch (r) {
-                case 1: reporteAsistenciaPorFechas(); break;
-                case 2: reporteHorasTrabajadasPorEmpleado(); break;
-                case 3: reporteAusenciasYRetardos(); break;
-                case 4: reportePermisosSolicitados(); break;
-                case 5: reporteHorasExtraAcumuladas(); break;
-                case 0: std::cout << "Volviendo al menú principal...\n"; break;
-                default: std::cout << "\033[1;31mOpción inválida.\033[0m\n";
+                switch (r)
+                {
+                case 1:
+                    reporteAsistenciaPorFechas();
+                    break;
+                case 2:
+                    reporteHorasTrabajadasPorEmpleado();
+                    break;
+                case 3:
+                    reporteAusenciasYRetardos();
+                    break;
+                case 4:
+                    reportePermisosSolicitados();
+                    break;
+                case 5:
+                    reporteHorasExtraAcumuladas();
+                    break;
+                case 0:
+                    std::cout << "Volviendo al menú principal...\n";
+                    break;
+                default:
+                    std::cout << "\033[1;31mOpción inválida.\033[0m\n";
                 }
                 std::cout << "\033[1;34m-------------------------------------------\033[0m\n\n";
-                if (r != 0) {
+                if (r != 0)
+                {
                     std::cout << "Presione [ENTER] para continuar...";
                     std::cin.get();
-                    limpiarPantalla();
+                    system("clear");
                 }
+
             } while (r != 0);
             break;
         }
@@ -104,11 +120,12 @@ int main() {
             std::cout << "\033[1;31mOpción inválida. Intente de nuevo.\033[0m\n";
         }
 
-        if (opcion != 0 && opcion != 5) {
+        if (opcion != 0 && opcion != 5)
+        {
             std::cout << "\033[1;34m-------------------------------------------\033[0m\n\n";
             std::cout << "Presione [ENTER] para continuar...";
             std::cin.get();
-            limpiarPantalla();
+            system("clear");
         }
 
     } while (opcion != 0);
