@@ -1,8 +1,6 @@
 #ifndef MODELOS_H
 #define MODELOS_H
 
-#include <string>
-
 struct Empleado {
     int codigo;
     char nombre[50];
@@ -14,7 +12,7 @@ struct Empleado {
 
 struct Marcacion {
     int codigoEmpleado;
-    char fecha[11];        // "YYYY-MM-DD"
+    char fecha[11];        // "dd/mm/aaaa"
     char horaEntrada[6];   // "HH:MM"
     char horaSalida[6];    // "HH:MM"
     int horasExtra;

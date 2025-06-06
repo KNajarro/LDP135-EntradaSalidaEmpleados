@@ -5,5 +5,9 @@
 
 void agregarEmpleado();
 void listarEmpleados();
+bool existeEmpleado(int idEmpleado);
+void editarEmpleado();
+void eliminarEmpleadoLogico();
+void listarEmpleadosPorDepartamento();
 
 #endif
